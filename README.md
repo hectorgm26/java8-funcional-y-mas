@@ -16,7 +16,7 @@ Este repositorio nace como un **apunte personal** y se ha convertido en una **re
 - 🎯 **Utilizar Pattern Matching** y switch expressions modernas
 - ✨ **Aprovechar la programación funcional** y Streams API
 - 📦 **Trabajar con Records** y datos inmutables
-- 🧵 **Entender la concurrencia moderna** con Virtual Threads y más
+- 🧵 **Entender** temas de concurrencia e hilos
 
 ---
 
