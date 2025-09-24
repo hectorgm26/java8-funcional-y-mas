@@ -1,0 +1,33 @@
+Un hilo es un objeto con capacidad de correr en forma concurrente el metodo run() que implementa la interfaz Runnable o extiende la clase Thread.
+
+ThreadPool y Callable
+
+Un ThreadPool es un objeto que se encarga de gestionar los hilos por nostros, creandolos e utilizandolos,
+es decir, si un objeto requiere de un Thread, lo toma de un Pool de Threads, y cuando termina de usarlo, lo devuelve al Pool para que otro objeto pueda usarlo.
+Este nunca finaliza como tal, sino que siempre esta disponible para ser utilizado. Por ende para ser finalizado, se debe usar el metodo shutdown().
+
+Interfaz ExecutorService
+Proporciona metodos para lanzar Threads de forma concurrente utilizando un pool de threads,
+recibiendo como parametro una implementacion de Runnable o Callable
+
+Implementaciones a traves de la clase Executors:
+1) newCachedThreadPools() : Crea un pool de threads que crea nuevos threads segun se necesiten (bajo demanda), pero reutiliza los threads que ya no estan en uso.
+2) newFixedThreadPools(int size) : Crea un pool de threads con un numero fijo de threads.
+3) newSingleThreadExecutor() : Crea un pool de threads con un solo thread hilo.
+4) newScheduledThreadPool() : Se utiliza para crear tareas calendariadas o periodicas.
+
+Callable
+Interfaz parecida a runnable con la diferencia de que esta si recibe un valor de retorno a traves de su metodo call() y puede lanzar excepciones.
+(Runnable tiene un metodo run pero no retorna nada ya que es void, pero Callable tiene un metodo call que retorna un valor generico objeto)
+
+Condiciones de carrera
+Es una expresion usada cuando la salida o estado de un proceso es dependiente de una secuencia de eventos que se ejecutan en orden arbitrario, y van a trabajar sobre un mismo recurso compartido
+En versiones antiguas de Java se utilizaba la palabra sinchronized en los metodos concurrentes para evitar rare conditions
+Ejemplo: una variable a global con el valor 1, y diferentes hilos que trabajaran con esa variable, como un thread sumar, otro restar, otro multiplicar, etc.,
+Esto provocara inconsistencias en el valor de la variable a, ya que los hilos pueden acceder a la variable al mismo tiempo y modificar su valor.
+
+Actualmente se usa la clase java.util.concurrent.Locks que lo que hace es crear un candado (lock) para que solo un hilo pueda acceder a la variable a la vez, desbloqueandola cuando termina de usarla.
+
+Implementaciones de la clase Locks:
+1) ReentrantLock : Es la implementacion mas comun, permite que un mismo hilo pueda bloquearse varias veces sin provocar un deadlock.
+2) ReentrantReadWriteLock : Permite que varios hilos puedan leer un recurso compartido al mismo tiempo, pero solo un hilo pueda escribir en el recurso compartido, modificando o lectura o escritura

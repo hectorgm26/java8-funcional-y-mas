@@ -1,0 +1,11 @@
+Una lambda tiene de sintaxis:
+
+(parámetros) -> {cuerpo}
+Donde:
+- Parámetros: Son los valores que la lambda recibe. Pueden ser de cualquier tipo de dato y pueden ser múltiples. Si hay un solo parámetro, los paréntesis son opcionales.
+- Flecha (->): Separa los parámetros del cuerpo de la lambda.
+- Cuerpo: Es el bloque de código que se ejecuta cuando se invoca la lambda. Puede contener una o más instrucciones. Si el cuerpo tiene una sola instrucción, las llaves son opcionales.
+
+Dentro de los stream, las lambdas se utilizan para definir operaciones como map, filter, reduce, etc.
+En contextos de stream, los parametros seran cada uno de los elementos del stream,
+y el cuerpo sera la operacion que queremos realizar con esos elementos.
